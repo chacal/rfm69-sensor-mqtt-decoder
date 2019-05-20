@@ -1,0 +1,17 @@
+{
+  "name": "rfm69-sensor-mqtt-decoder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "built/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chacal/js-utils": "^1.9.1",
+    "@types/node": "^12.0.2",
+    "mqtt": "^2.18.8",
+    "typescript": "^3.4.5"
+  }
+}
