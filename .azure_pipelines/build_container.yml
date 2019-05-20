@@ -15,7 +15,7 @@ jobs:
       - script: docker run --privileged linuxkit/binfmt:v0.7
         displayName: 'initialize binfmt'
         condition: and(succeeded(), ne('${{ parameters.image_base }}', 'amd64'))
-      - script: docker build . -t jihartik/rfm69-mqtt-decoder:${{ parameters.image_base }} --build-arg BASE=${{ parameters.image_base }}
+      - script: docker build . -t jihartik/rfm69-sensor-mqtt-decoder:${{ parameters.image_base }} --build-arg BASE=${{ parameters.image_base }}
         displayName: 'build container'
-      - script: docker push jihartik/rfm69-mqtt-decoder:${{ parameters.image_base }}
+      - script: docker push jihartik/rfm69-sensor-mqtt-decoder:${{ parameters.image_base }}
         displayName: 'push container'

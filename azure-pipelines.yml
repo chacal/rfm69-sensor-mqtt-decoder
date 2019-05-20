@@ -24,8 +24,8 @@ jobs:
           DOCKERHUB_USERNAME: $(DOCKERHUB_USERNAME)
           DOCKERHUB_PASSWORD: $(DOCKERHUB_PASSWORD)
 
-      - script: DOCKER_CLI_EXPERIMENTAL=enabled docker manifest create jihartik/rfm69-mqtt-decoder:latest jihartik/rfm69-mqtt-decoder:arm32v7 jihartik/rfm69-mqtt-decoder:amd64
+      - script: DOCKER_CLI_EXPERIMENTAL=enabled docker manifest create jihartik/rfm69-sensor-mqtt-decoder:latest jihartik/rfm69-sensor-mqtt-decoder:arm32v7 jihartik/rfm69-sensor-mqtt-decoder:amd64
         displayName: 'create manifest'
 
-      - script: DOCKER_CLI_EXPERIMENTAL=enabled docker manifest push jihartik/rfm69-mqtt-decoder:latest
+      - script: DOCKER_CLI_EXPERIMENTAL=enabled docker manifest push jihartik/rfm69-sensor-mqtt-decoder:latest
         displayName: 'push manifest'
