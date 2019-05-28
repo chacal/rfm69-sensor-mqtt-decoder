@@ -11,6 +11,7 @@ const MQTT_PASSWORD = process.env.MQTT_PASSWORD || undefined
 const mqttClient = Mqtt.startMqttClient(MQTT_BROKER, MQTT_USERNAME, MQTT_PASSWORD)
 mqttClient.subscribe('/rfm69gw/rx')
 mqttClient.on('message', handleMessage)
+registerProcessSignalHandler()
 
 
 function handleMessage(topic: string, payload: Buffer): void {
@@ -33,3 +34,13 @@ function publishEvent(e: ISensorEvent): void {
 }
 
 function isCommand(e: ISensorEvent) { return e.tag === 'a' }  // At the moment only autopilot remote sends commands
+
+function registerProcessSignalHandler() {
+  process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received, closing MQTT connection..')
+    mqttClient.end(false, () => {
+      console.log('MQTT connection closed. Exiting..')
+      process.exit(0)
+    })
+  })
+}
